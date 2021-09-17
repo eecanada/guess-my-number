@@ -19,7 +19,8 @@
 
 # Getting Started 
 
-[Click to play!](guessmynumber20.netlify.app)
+
+[Click to play!](https://guessmynumber20.netlify.app/)
 
 * The game begins immediately. A secret number is randomly selected ranging from 1-20.
 * With every wrong answer, the user loses one point. If their score is reduced to 0, they lose.
