@@ -8,13 +8,17 @@ let highScore = 0;
 
 let labelScore = document.querySelector('.score').textContent;
 
+function displayMessage(message) {
+  document.querySelector('.message').textContent = message;
+}
+
 document.querySelector('.check').addEventListener('click', function () {
   let guess = Number(document.querySelector('.guess').value);
 
   if (!guess) {
-    document.querySelector('.message').textContent = ' ⛔️ No Number!';
+    displayMessage(' ⛔️ No Number!');
   } else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = ' 🎉 Correct Number!';
+    displayMessage(' 🎉 Correct Number!');
 
     document.querySelector('.number').textContent = secretNumber;
 
@@ -28,12 +32,13 @@ document.querySelector('.check').addEventListener('click', function () {
     }
   } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = guess > secretNumber ? ' 📈 Too High!' : '📉 Too Low!'
+      displayMessage(guess > secretNumber ? ' 📈 Too High!' : '📉 Too Low!');
 
       score = score - 1;
       document.querySelector('.score').textContent = score;
     } else {
-      document.querySelector('.message').textContent = '💥 GAME OVER!';
+      displayMessage('💥 GAME OVER!');
+
       document.querySelector('.score').textContent = 0;
     }
   }
@@ -41,8 +46,7 @@ document.querySelector('.check').addEventListener('click', function () {
 
 document.querySelector('.again').addEventListener('click', function () {
   if (score == 20) {
-    document.querySelector('.message').textContent =
-      'Cannot reset, start guessing!';
+    displayMessage('Cannot reset, start guessing!');
   } else {
     score = 20;
     document.querySelector('.score').textContent = 20;
@@ -52,7 +56,8 @@ document.querySelector('.again').addEventListener('click', function () {
 
     document.body.style.background = '#222';
     document.querySelector('.number').style.width = '15rem';
-    document.querySelector('.message').textContent = 'Start guessing...';
+
+    displayMessage('Start guessing...');
 
     document.querySelector('.guess').value = '';
 
