@@ -1,21 +1,12 @@
 'use strict';
 
-// console.log(document.querySelector('.message').textContent);
-
-// document.querySelector('.message').textContent = ' 🎉 Correct Number!';
-
-// console.log(document.querySelector('.message').textContent);
-
-// document.querySelector('.number').textContent = 120;
-// document.querySelector('.score').textContent = 10;
-
-// document.querySelector('.guess').value = 23
-
 let secretNumber = Math.trunc(Math.random() * 20 + 1);
 
-// document.querySelector('.number').textContent = secretNumber;
-
 let score = (document.querySelector('.score').textContent = 20);
+
+let highScore = 0;
+
+let labelScore = document.querySelector('.score').textContent;
 
 document.querySelector('.check').addEventListener('click', function () {
   let guess = Number(document.querySelector('.guess').value);
@@ -30,6 +21,15 @@ document.querySelector('.check').addEventListener('click', function () {
     document.body.style.background = '#2BC20E';
 
     document.querySelector('.number').style.width = '30rem';
+
+
+    if (labelScore > highScore) {
+      let newHighScore = document.querySelector('.highscore').textContent = score;
+
+    
+    }
+
+
   } else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = ' 📈 Too High!';
@@ -51,6 +51,9 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+
+ 
+
 });
 
 document.querySelector('.again').addEventListener('click', function () {
@@ -69,5 +72,7 @@ document.querySelector('.again').addEventListener('click', function () {
     document.querySelector('.message').textContent = 'Start guessing...';
 
     document.querySelector('.guess').value = '';
+
+    highScore = newHighScore
   }
 });
